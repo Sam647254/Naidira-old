@@ -4,6 +4,10 @@ version: 0.1.0
 authors:
   - Sam Wang <samofcorinth@gmx.ca>
 
+targets:
+  naidira:
+    main: src/cli.cr
+
 crystal: 1.0.0
 
-license: MIT
+license: UNLICENSE
