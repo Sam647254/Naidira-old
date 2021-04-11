@@ -1,0 +1,2 @@
+module Naidira::Constants
+end
