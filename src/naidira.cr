@@ -1,4 +1,5 @@
 require "./word_generator"
+require "./decomposer"
 
 # TODO: Write documentation for `Naidira`
 module Naidira
