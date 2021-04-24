@@ -11,8 +11,16 @@ module Naidira
     end
 
     def noun : String
-      consonant1 = NOUN_F1_CONSONANTS[@random.rand(0..NOUN_F1_CONSONANTS.size - 1)]
-      vowel1 = NOUN_F1_VOWELS[@random.rand(0..NOUN_F1_VOWELS.size - 1)]
+      generate_word(NOUN_F1_VOWELS, NOUN_F1_CONSONANTS)
+    end
+
+    def verb : String
+      generate_word(VERB_F1_VOWELS, VERB_F1_CONSONANTS)
+    end
+
+    private def generate_word(first_vowels : Array(Char), first_consonants : Array(Char)) : String
+      consonant1 = first_consonants[@random.rand(0..first_consonants.size - 1)]
+      vowel1 = first_vowels[@random.rand(0..first_vowels.size - 1)]
 
       next_syllable_chance = 1.0
       has_diphthong = false

@@ -11,4 +11,8 @@ OptionParser.parse do |parser|
   parser.on("noun", "Generate a random noun") do
     puts word_generator.noun
   end
+
+  parser.on("verb", "Generate a random verb") do
+    puts word_generator.verb
+  end
 end
