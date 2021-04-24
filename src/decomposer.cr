@@ -33,17 +33,22 @@ module Naidira::Decomposer
             syllables << "#{consonant}#{vowel}"
             vowel = nil
           else
-            raise ClusterException.new("#{consonant}#{ch}}", input)
+            raise ClusterException.new("#{consonant}#{ch}", input)
           end
         end
         consonant = ch
       when LetterType::Vowel
+        if consonant.nil?
+          raise InvalidInputException.new("Unmatched vowel #{ch} in #{input}")
+        end
         if !vowel.nil?
           case {vowel, ch}
           when {'a', 'i'}, {'e', 'i'}, {'u', 'i'}
             vowel = vowel.upcase
           when {'o', 'u'}
             vowel = 'O'
+          else
+            raise ClusterException.new("#{vowel}#{ch}", input)
           end
         else
           vowel = ch

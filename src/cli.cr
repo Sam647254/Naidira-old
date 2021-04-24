@@ -21,6 +21,10 @@ OptionParser.parse do |parser|
   end
 
   parser.on("-s WORD", "--split=WORD", "Split a word into syllables, if possible") do |input|
-    puts Decomposer.split_into_syllables(input).join(", ")
+    begin
+      puts Decomposer.split_into_syllables(input).join(", ")
+    rescue exception
+      puts exception.message
+    end
   end
 end
