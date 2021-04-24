@@ -31,13 +31,12 @@ module Naidira::Decomposer
         if !consonant.nil?
           if !vowel.nil?
             syllables << "#{consonant}#{vowel}"
+            vowel = nil
           else
             raise ClusterException.new("#{consonant}#{ch}}", input)
           end
-        else
-          consonant = ch
-          vowel = nil
         end
+        consonant = ch
       when LetterType::Vowel
         if !vowel.nil?
           case {vowel, ch}

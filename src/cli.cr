@@ -19,4 +19,8 @@ OptionParser.parse do |parser|
   parser.on("-c WORD", "--check=WORD", "Check the word type of a given word") do |input|
     puts Decomposer.type_of(input)
   end
+
+  parser.on("-s WORD", "--split=WORD", "Split a word into syllables, if possible") do |input|
+    puts Decomposer.split_into_syllables(input).join(", ")
+  end
 end
