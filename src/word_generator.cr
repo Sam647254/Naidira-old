@@ -24,7 +24,7 @@ module Naidira
 
       next_syllable_chance = 1.0
       has_diphthong = false
-      syllables = ["#{consonant1}#{vowel1}"]
+      syllables = ["#{consonant1}#{normalize(vowel1)}"]
       loop do
         continue = random.rand
         break unless continue < next_syllable_chance
@@ -37,12 +37,27 @@ module Naidira
 
         consonant = CONSONANTS[@random.rand(0..CONSONANTS.size - 1)]
 
-        syllables << "#{consonant}#{vowel}"
+        syllables << "#{consonant}#{normalize(vowel)}"
 
         next_syllable_chance *= 0.4
       end
 
       return syllables.join
+    end
+
+    private def normalize(vowel : Char) : String
+      case vowel
+      when 'A'
+        "ai"
+      when 'E'
+        "ei"
+      when 'O'
+        "ou"
+      when 'U'
+        "ui"
+      else
+        vowel.to_s
+      end
     end
   end
 end

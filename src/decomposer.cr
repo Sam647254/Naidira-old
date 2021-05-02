@@ -5,7 +5,10 @@ include Naidira::Constants
 module Naidira::Decomposer
   extend self
 
-  class ClusterException < Exception
+  class DecomposerException < Exception
+  end
+
+  class ClusterException < DecomposerException
     property cluster : String, word : String
 
     def initialize(@cluster : String, @word : String)
@@ -16,7 +19,7 @@ module Naidira::Decomposer
     end
   end
 
-  class InvalidInputException < Exception
+  class InvalidInputException < DecomposerException
   end
 
   def split_into_syllables(input : String) : Array(String)

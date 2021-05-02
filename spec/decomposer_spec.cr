@@ -17,4 +17,14 @@ describe Decomposer do
       Decomposer.split_into_syllables(word).should eq(syllables)
     end
   end
+
+  it "rejects invalid words" do
+    tests = ["Ma", "nta", "tae", "ata"]
+
+    tests.each do |word|
+      expect_raises(Decomposer::DecomposerException) do
+        Decomposer.split_into_syllables(word)
+      end
+    end
+  end
 end

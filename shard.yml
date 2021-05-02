@@ -4,11 +4,6 @@ version: 0.1.0
 authors:
   - Sam Wang <samofcorinth@gmx.ca>
 
-dependencies:
-  quick:
-    github: waterlink/quick.cr
-    version: ~> 1.0
-
 targets:
   naidira:
     main: src/cli.cr
